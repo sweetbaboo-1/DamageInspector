@@ -12,7 +12,7 @@ playerIDs["ambre69"] = 152317231
 playerIDs[".artmiss"] = 178855266
 playerIDs["galahadtvee"] = 101090810
 playerIDs["cursed.one"] = 161133996
-# playerIDs["Heartchrune"] = 
+playerIDs["hartrun7"] = 439731573
 
 api_get_last_match = "https://api.opendota.com/api/players/#PLAYERID#/matches/?limit=1"
 api_match_from_id = "https://api.opendota.com/api/matches/#MATCHID#"
