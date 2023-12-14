@@ -1,0 +1,9 @@
+playerIDs = {}
+# playerIDs["Matt Main"] = 409488410
+playerIDs["sweetbaboo"] = 161264304
+playerIDs["negative_epsilon"] = 105395680
+playerIDs["ambre69"] = 152317231
+playerIDs[".artmiss"] = 178855266
+playerIDs["galahadtvee"] = 101090810
+playerIDs["cursed.one"] = 161133996
+playerIDs["hartrun7"] = 439731573
