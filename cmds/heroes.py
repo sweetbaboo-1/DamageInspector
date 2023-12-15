@@ -9,7 +9,7 @@ logger = settings.logging.getLogger("bot")
 @commands.group()
 async def heroes(ctx):
     if ctx.invoked_subcommand is None:
-        await ctx.send("try !help hero")
+        await ctx.send("try !help heroes")
 
 
 # This command should add a hero to the json file
@@ -19,13 +19,13 @@ async def add(ctx, id: int, *name: str):
     """{id, name}"""
     heroName = " ".join(name)
     logger.info("Trying to add hero")
-    await ctx.send(f"Adding hero {heroName} with id {id} to file")
+    await ctx.send(f"Adding hero {heroName} with id {id}.")
     if addHero(id, heroName):
         logger.info(f"Added {name} with id {id}")
-        await ctx.send(f"Successfully added {heroName}")
+        await ctx.send(f"Successfully added {heroName}.")
     else:
         logger.info(f"Failed to add {name} with id {id}")
-        await ctx.send(f"Failed to add {heroName}")
+        await ctx.send(f"Failed to add {heroName}.")
 
 
 # This command should remove a hero from the json file
@@ -34,12 +34,13 @@ async def add(ctx, id: int, *name: str):
 async def remove(ctx, *name: str):
     """{name}"""
     heroName = " ".join(name)
+    await ctx.send(f"Removing hero {heroName}.")
     if removeHero(heroName):
         logger.info(f"Removed {name}")
-        await ctx.send(f"Successfully removed {heroName}")
+        await ctx.send(f"Successfully removed {heroName}.")
     else:
         logger.info(f"Failed to remove {name}")
-        await ctx.send(f"Failed to remove {heroName}")
+        await ctx.send(f"Failed to remove {heroName}.")
 
 
 @heroes.command(name="view")

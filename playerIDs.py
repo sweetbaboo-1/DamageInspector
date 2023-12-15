@@ -15,5 +15,7 @@ def addPlayer(name, id) -> bool:
 
 def removePlayer(name) -> bool:
     data = parse(PLAYER_INFO_FILENAME)
+    if name not in data:
+      return False
     del data[name]
     return write(PLAYER_INFO_FILENAME, data)

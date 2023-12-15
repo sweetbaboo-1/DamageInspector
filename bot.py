@@ -11,7 +11,6 @@ def run():
     intents.message_content = True
     intents.members = True
     bot = commands.Bot(command_prefix="!", intents=intents)
-    
 
     @bot.event
     async def on_ready():
@@ -22,7 +21,7 @@ def run():
                 logger.info(f"loading {cmd_file}")
                 await bot.load_extension(f"cmds.{cmd_file.name[:-3]}")
 
-        bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
 
 
 if __name__ == "__main__":

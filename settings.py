@@ -11,10 +11,11 @@ DISCORD_API_SECRET = os.getenv("DISCORD_API_TOKEN")
 BASE_DIR = pathlib.Path(__file__).parent
 
 CMDS_DIR = BASE_DIR / "cmds"
+DATA_DIR = BASE_DIR / "data"
 
-HERO_INFO_FILENAME = "heroes_data.json"
+HERO_INFO_FILENAME = DATA_DIR / "heroes_data.json"
 
-PLAYER_INFO_FILENAME = "player_data.json"
+PLAYER_INFO_FILENAME = DATA_DIR / "player_data.json"
 
 
 LOGGING_CONFIG = {
