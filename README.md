@@ -9,5 +9,4 @@ TODO:
   * Allow for multiple matches to be parsed
   * Allow users to inspect the damage of other users
   * Allow users to add themselves to the ID list (will have to create a text file that gets written to and saved locally)
-  * Allow myself to add new heroes (will have to create a text file that gets written to and saved locally)
   * Make Dino do the math part of this because I don't want to.
