@@ -1,7 +1,7 @@
 from heroIDs import getHeroNameFromID
 from playerIDs import getPlayerIDs
 
-from ameenMode import gather_stats
+from ameenMode import gather_stats, find_max_stats
 
 
 # TODO: make Dino come up with something more interesting
@@ -11,6 +11,9 @@ def parseMatchData(recentMatch, match_id):
     
     ## Get all the stats!
     all_stats, damage, damageBenchmarks, heroNames = gather_stats(players, playerIDs)
+
+    max_stats = find_max_stats(all_stats)
+    #return max_stats
 
 
     maxDamage = -1

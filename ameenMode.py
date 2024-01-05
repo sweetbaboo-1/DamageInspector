@@ -15,7 +15,22 @@ from heroIDs import getHeroNameFromID
 
 
 def find_max_stats(all_stats):
-    pass
+    np = "noteable_players"
+    noteable_players = all_stats[np]
+    exclude = ["hero_id",
+               "account_id"]
+
+    max_indices = all_stats.idxmax(axis=0, numeric_only=True)
+    max_indices = max_indices.drop(exclude, axis=0)
+    
+    max_stats_df = pd.DataFrame({
+        "Player": [noteable_players[i] for i in max_indices],
+        "Stat": max_indices.index,
+        "Value": all_stats.max(numeric_only=True).drop(exclude)
+    })
+
+    return max_stats_df
+
 
 def gather_stats(players, playerIDs):
     id = ["hero_id",
@@ -85,6 +100,7 @@ def gather_stats(players, playerIDs):
         for stat in id+game_stats:
             row.append(player.get(stat))
         
+        # Creates different column for raw and pct stats
         for benchmark_stat in benchmark_stats:
             bs = player.get("benchmarks").get(benchmark_stat)
             raw = bs["raw"]
@@ -99,7 +115,7 @@ def gather_stats(players, playerIDs):
     all_stats_df = pd.DataFrame(all_stats, columns=stats)
     all_stats_df = all_stats_df.assign(
         hero_name = lambda x: [getHeroNameFromID(id) for id in x.hero_id],
-        noteable_players = lambda x: [inv_map[id] if id in inv_map else None for id in x.account_id]
+        noteable_players = lambda x: [inv_map[id] if id in inv_map else pd.NA for id in x.account_id]
         )
 
     return all_stats_df, damage, damageBenchmarks, heroNames
