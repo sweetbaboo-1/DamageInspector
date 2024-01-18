@@ -14,7 +14,6 @@ CMDS_DIR = BASE_DIR / "cmds"
 DATA_DIR = BASE_DIR / "data"
 
 HERO_INFO_FILENAME = DATA_DIR / "heroes_data.json"
-
 PLAYER_INFO_FILENAME = DATA_DIR / "player_data.json"
 
 
