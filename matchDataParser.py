@@ -1,23 +1,20 @@
 from heroIDs import getHeroNameFromID
 from playerIDs import getPlayerIDs
 
+from ameenMode import gather_stats, find_max_stats
+
 
 # TODO: make Dino come up with something more interesting
 def parseMatchData(recentMatch, match_id):
     playerIDs = getPlayerIDs()
-    damage = {}
-    damageBenchmarks = {}
-    heroNames = {}
     players = recentMatch.get("players")
-    for player in players:
-        playerID = player.get("account_id")
-        for p in playerIDs:
-            if playerIDs[p] == playerID:
-                damage[p] = player.get("hero_damage")
-                damageBenchmarks[p] = player.get("benchmarks").get(
-                    "hero_damage_per_min"
-                )
-                heroNames[p] = getHeroNameFromID(player.get("hero_id"))
+    
+    ## Get all the stats!
+    all_stats, damage, damageBenchmarks, heroNames = gather_stats(players, playerIDs)
+
+    max_stats = find_max_stats(all_stats)
+    #return max_stats
+
 
     maxDamage = -1
     maxDamagePlayer = ""
@@ -28,6 +25,8 @@ def parseMatchData(recentMatch, match_id):
     result = (
         f"Match ID: {match_id}\nhttps://www.opendota.com/matches/{match_id}/overview\n"
     )
+
+    
 
     for player in damage:
         result += f'{player} dealt {damage[player]:,} damage or {round(damageBenchmarks[player].get("raw"), 2):,.2f} damage per minute.\nThat is higher than {round(damageBenchmarks[player].get("pct") * 100, 2)}% of recent players.\n'
