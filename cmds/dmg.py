@@ -18,7 +18,7 @@ async def dmg(ctx):
 async def check(ctx, match_count=1):
     """Checks your damage from your most recent match."""
 
-    logger.info("Trying to inspect the damage")
+    logger.info(f"{ctx.author} called !dmg check")
     await ctx.send("Inspecting the damage...")
     if ctx.author.name not in getPlayerIDs():
         logger.error(f"{ctx.author.name} not in file")
