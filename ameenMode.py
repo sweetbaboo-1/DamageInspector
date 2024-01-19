@@ -17,6 +17,7 @@ from heroIDs import getHeroNameFromID
 def find_max_stats(all_stats):
     np = "noteable_players"
     noteable_players = all_stats[np]
+    all_stats = all_stats[~pd.isna(all_stats["noteable_players"])]
     exclude = ["hero_id",
                "account_id"]
 
@@ -71,6 +72,7 @@ def gather_stats(players, playerIDs):
         "hero_healing_per_min",
     ]
 
+    # Raw and percent forms need to be stored
     benchmark_stats_names = [None]*2*len(benchmark_stats)
     benchmark_stats_names[::2] = benchmark_stats
     benchmark_stats_names[1::2] = [i + "_pct" for i in benchmark_stats]

@@ -13,7 +13,6 @@ def parseMatchData(recentMatch, match_id):
     all_stats, damage, damageBenchmarks, heroNames = gather_stats(players, playerIDs)
 
     max_stats = find_max_stats(all_stats)
-    #return max_stats
 
 
     maxDamage = -1
